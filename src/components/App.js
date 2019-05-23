@@ -3,6 +3,30 @@ import SearchBar from './SearchBar'
 import VideoList from './VideoList'
 import VideoDetail from './VideoDetail'
 import youtube from '../api/youtube'
+import Particles from 'react-particles-js';
+
+const particlesOptions = {
+	    "particles": {
+	        "number": {
+	            "value": 200,
+	            density: { 
+                      enable: true,
+                      value_area: 2000                      
+                    }
+	        },
+	        "size": {
+	            "value": 2
+	        }
+	    },
+	    "interactivity": {
+	        "events": {
+	            "onhover": {
+	                "enable": true,
+	                "mode": "repulse"
+	            }
+	        }
+	    }
+	}
 
 class App extends React.Component {
 state = {videos: [], selectedVideo: null };
@@ -34,7 +58,10 @@ onVideoSelect = (video) => {
 
   render () {
     return (
+    	<div>
+    	<Particles className='particles' params={particlesOptions} />
     	<div className="ui container">
+    	 
     	   	<SearchBar onFormSubmit={this.onTermSubmit} />
     	   	<div className="ui grid">
     	   		<div className="ui row">
@@ -49,6 +76,7 @@ onVideoSelect = (video) => {
 			    	</div>
 		    	</div>
 		   	</div>
+    	</div>
     	</div>
     	);
 } 
